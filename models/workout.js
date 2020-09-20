@@ -45,11 +45,11 @@ const workOutSchema = new Schema(
     }
 );
 
-workOutSchema.virtual('totalDuration').get(() => {
+workOutSchema.virtual('totalDuration').get(function () {
     return this.exercises.reduce((total, exercise) => {
         return total + exercise.duration;
     }, 0);
-});
+})
 
 const Workout = mongoose.model('Workout', workOutSchema);
 module.exports = Workout;
